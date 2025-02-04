@@ -1,0 +1,32 @@
+{
+    "name": "akoebbe/php_koans",
+    "description": "Learn PHP through Koans using PHPUnit",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Koebbe",
+            "email": "andrew@koebbe.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PhpKoans\\": "koans/"
+        }
+    },
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "phpmd/phpmd": "^2.13",
+        "phpro/grumphp": "^2.0",
+        "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "^3.7"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpro/grumphp": true
+        }
+    }
+}
