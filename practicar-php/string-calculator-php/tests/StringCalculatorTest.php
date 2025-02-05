@@ -51,7 +51,19 @@ final class StringCalculatorTest extends TestCase
     public function givenThreeParameterReturnsSumResult(): void
     {
         $calculator = new StringCalculator();
+
         $result = $calculator->add("2,5, 8");
+
         $this->assertEquals(15, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function givenParametersWithLineBreakReturnsSumResult(): void
+    {
+        $calculator = new StringCalculator();
+        $result = $calculator->add("1\n2,3");
+        $this->assertEquals(6, $result);
     }
 }

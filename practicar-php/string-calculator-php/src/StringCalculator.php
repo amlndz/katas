@@ -21,7 +21,7 @@ class StringCalculator
         foreach ($numbers as $number) {
             $result += $number;
         }
-        
+
         return $result;
     }
 }
