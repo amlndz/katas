@@ -9,6 +9,11 @@ class DelimeterRule implements Rule
 
         $delimiter = ",";
 
+        if (preg_match($this::$REGEXDELIMITER, $string, $matches)) {
+            $delimiter = preg_quote($matches[1], '/');
+            $string = preg_replace($this::$REGEXDELIMITER, '', $string);
+        }
+
         $numbers = str_replace("\n", $delimiter, $string);
         $numbers = array_map('intval', array_map('trim', explode($delimiter, $numbers)));
         return $numbers;

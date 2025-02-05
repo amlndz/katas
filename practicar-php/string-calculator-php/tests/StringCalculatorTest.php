@@ -73,7 +73,7 @@ final class StringCalculatorTest extends TestCase
     public function givenParametersWithEspecialDelimeterReturnsSumResult(): void
     {
         $calculator = new StringCalculator();
-        $result = $calculator->add("//;\n1;2");
-        $this->assertEquals(3, $result);
+        $result = $calculator->add("//;\n1;2;6");
+        $this->assertEquals(9, $result);
     }
 }
