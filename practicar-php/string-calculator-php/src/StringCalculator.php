@@ -2,18 +2,15 @@
 
 namespace Deg540\StringCalculatorPHP;
 
-use Deg540\StringCalculatorPHP\Rules\DelimeterRule;
-use Deg540\StringCalculatorPHP\Rules\MaximumNumerAllowedRule;
+use Deg540\StringCalculatorPHP\Rules\MaximumNumberAllowedRule;
 use Deg540\StringCalculatorPHP\Rules\NegativeNumberRule;
-
 class StringCalculator
 {
     public array $rules = [];
     public function __construct()
     {
-        $this->rules[] = new DelimeterRule();
         $this->rules[] = new NegativeNumberRule();
-        $this->rules[] = new MaximumNumerAllowedRule();
+        $this->rules[] = new MaximumNumberAllowedRule();
     }
 
     public function add($string) {
@@ -26,9 +23,11 @@ class StringCalculator
             return $string;
         }
 
-        $numbers = $this->rules[0]->manage($string);
-        $numbers = $this->rules[1]->manage($numbers);
-        $numbers = $this->rules[2]->manage($numbers);
+        $numbers = Delimiter::delimiter($string);
+
+        foreach ($this->rules as $rule) {
+            $numbers = $rule->manage($numbers);
+        }
 
         $result = 0;
 
