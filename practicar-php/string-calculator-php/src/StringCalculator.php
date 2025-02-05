@@ -2,10 +2,16 @@
 
 namespace Deg540\StringCalculatorPHP;
 
+use Deg540\StringCalculatorPHP\Rules\DelimeterRule;
+
 class StringCalculator
 {
+    public array $rules = [];
+    public function __construct()
+    {
+        $this->rules[] = new DelimeterRule();
+    }
     public function add($string) {
-
         if (empty($string)) {
             return 0;
         }
@@ -14,8 +20,7 @@ class StringCalculator
             return $string;
         }
 
-        $numbers = str_replace("\n", ",", $string);
-        $numbers = array_map('intval', array_map('trim', explode(',', $numbers)));
+        $numbers = $this->rules[0]->manage($string);
 
         $result = 0;
 
