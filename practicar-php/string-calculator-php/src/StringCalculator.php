@@ -2,7 +2,7 @@
 
 namespace Deg540\StringCalculatorPHP;
 
-use Deg540\CleanCodeKata9\Rules\Rule;
+use Deg540\StringCalculatorPHP\Rules\Rule;
 use Deg540\StringCalculatorPHP\Rules\MaximumNumberAllowedRule;
 use Deg540\StringCalculatorPHP\Rules\NegativeNumberRule;
 class StringCalculator

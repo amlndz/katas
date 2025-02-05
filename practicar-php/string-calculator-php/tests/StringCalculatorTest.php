@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Deg540\StringCalculatorPHP\Test;
 
 use Deg540\StringCalculatorPHP\StringCalculator;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 final class StringCalculatorTest extends TestCase
 {
-    public $calculator;
+    public StringCalculator $calculator;
 
     public function setUp(): void
     {
@@ -66,7 +67,7 @@ final class StringCalculatorTest extends TestCase
      */
     public function givenNegativeNumbersThrowsException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage("Negativos no soportados: -2, -5");
 
         $this->calculator->add("1,-2,3,-5");
