@@ -10,6 +10,13 @@ class StringCalculator
             return 0;
         }
 
-        return $string;
+        if (strlen($string) == 1) {
+            return $string;
+        }
+
+        $numbers = array_map('intval', array_map('trim', explode(',', $string)));
+        $result = intval($numbers[0]) + intval($numbers[1]);
+
+        return $result;
     }
 }
