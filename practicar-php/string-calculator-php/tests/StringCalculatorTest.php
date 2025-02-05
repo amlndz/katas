@@ -101,4 +101,13 @@ final class StringCalculatorTest extends TestCase
 
         $this->assertEquals(9, $result);
     }
+
+    /**
+     * @test
+     */
+    public function givenMultiplesDelimitersReturnsSumResult(): void{
+        $calculator = new StringCalculator();
+        $result = $calculator->add("//[****]\n1***2***3");
+        $this->assertEquals(6, $result);
+    }
 }
