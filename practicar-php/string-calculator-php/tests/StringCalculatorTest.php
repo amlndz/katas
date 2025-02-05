@@ -9,5 +9,16 @@ use PHPUnit\Framework\TestCase;
 
 final class StringCalculatorTest extends TestCase
 {
-    // TODO: String Calculator Kata Tests
+    /**
+     * @test
+     */
+    public function givenNoParametersReturns0(): void
+    {
+        $calculator = new StringCalculator();
+
+        $result = $calculator->add();
+
+        $this->assertEquals(0, $result);
+
+    }
 }
