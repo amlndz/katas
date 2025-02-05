@@ -5,7 +5,7 @@ use InvalidArgumentException;
 class NegativeNumberRule implements Rule
 {
 
-    public function manage(array|string $numbers): array
+    public function manage(array $numbers): array
     {
         $negatives = array_filter($numbers, fn($num) => $num < 0);
 

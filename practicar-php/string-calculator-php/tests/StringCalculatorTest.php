@@ -60,4 +60,65 @@ final class StringCalculatorTest extends TestCase
 
         $this->assertEquals(15, $result);
     }
+
+    /**
+     * @test
+     */
+    public function givenNegativeNumbersThrowsException(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("Negativos no soportados: -2, -5");
+
+        $this->calculator->add("1,-2,3,-5");
+    }
+
+    /**
+     * @test
+     */
+    public function skipNonValidNumber(): void
+    {
+        $result = $this->calculator->add("//;\n1;2;6;9012");
+
+        $this->assertEquals(9, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function givenParametersWithLineBreakReturnsSumResult(): void
+    {
+        $result = $this->calculator->add("1\n2,3");
+
+        $this->assertEquals(6, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function givenParametersWithEspecialDelimeterReturnsSumResult(): void
+    {
+        $result = $this->calculator->add("//;\n1;2;6");
+
+        $this->assertEquals(9, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function givenLongDelimitersReturnsSumResult(): void
+    {
+        $result = $this->calculator->add("//[***]\n1***2***3");
+
+        $this->assertEquals(6, $result);
+    }
+
+//    /**
+//     * @test
+//     */
+//    public function givenMultiplesDelimiterReturnsSumResult(): void
+//    {
+//        $result = $this->calculator->add("//[***][###]\n1***2###3");
+//
+//        $this->assertEquals(6, $result);
+//    }
 }

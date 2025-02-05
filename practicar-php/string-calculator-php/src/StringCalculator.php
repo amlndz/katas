@@ -2,15 +2,21 @@
 
 namespace Deg540\StringCalculatorPHP;
 
+use Deg540\CleanCodeKata9\Rules\Rule;
 use Deg540\StringCalculatorPHP\Rules\MaximumNumberAllowedRule;
 use Deg540\StringCalculatorPHP\Rules\NegativeNumberRule;
 class StringCalculator
 {
-    public array $rules = [];
+    /**
+     * @var Rule[]
+     */
+    public array $rules;
     public function __construct()
     {
-        $this->rules[] = new NegativeNumberRule();
-        $this->rules[] = new MaximumNumberAllowedRule();
+        $this->rules = [
+            new NegativeNumberRule(),
+            new MaximumNumberAllowedRule()
+        ];
     }
 
     public function add($string) {
