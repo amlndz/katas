@@ -76,4 +76,17 @@ final class StringCalculatorTest extends TestCase
         $result = $calculator->add("//;\n1;2;6");
         $this->assertEquals(9, $result);
     }
+
+    /**
+     * @test
+     */
+    public function givenNegativeNumbersThrowsException(): void
+    {
+        $calculator = new StringCalculator();
+
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("Negativos no soportados: -2, -5");
+
+        $calculator->add("1,-2,3,-5");
+    }
 }
