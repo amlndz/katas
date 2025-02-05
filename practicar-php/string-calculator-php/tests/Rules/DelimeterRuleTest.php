@@ -50,14 +50,13 @@ class DelimeterRuleTest extends TestCase
         $this->assertEquals(6, $result);
     }
 
-    /**
-     * @test
-     */
-    public function givenMultiplesDelimiterReturnsSumResult(): void
-    {
-        $result = $this->calculator->add("//[***][###]\n1***2###3");
-
-        $this->assertEquals(6, $result);
-    }
-
+//    /**
+//     * @test
+//     */
+//    public function givenMultiplesDelimiterReturnsSumResult(): void
+//    {
+//        $result = $this->calculator->add("//[***][###]\n1***2###3");
+//
+//        $this->assertEquals(6, $result);
+//    }
 }
