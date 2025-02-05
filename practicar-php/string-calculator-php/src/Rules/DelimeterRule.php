@@ -5,7 +5,7 @@ namespace Deg540\StringCalculatorPHP\Rules;
 class DelimeterRule implements Rule
 {
     static $REGEXDELIMITER = '/^\/\/(.+)\n/';
-    public function manage(string $string): array {
+    public function manage(string|array $string): array {
 
         $delimiter = ",";
 
