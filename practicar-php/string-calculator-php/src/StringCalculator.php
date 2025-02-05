@@ -4,9 +4,12 @@ namespace Deg540\StringCalculatorPHP;
 
 class StringCalculator
 {
+    public function add($string) {
 
-    public function add($string=null)
-    {
-        return 0;
+        if (empty($string)) {
+            return 0;
+        }
+
+        return $string;
     }
 }

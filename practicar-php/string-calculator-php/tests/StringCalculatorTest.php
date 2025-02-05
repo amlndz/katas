@@ -12,13 +12,24 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function givenNoParametersReturns0(): void
+    public function givenEmptyParameterReturns0(): void
     {
         $calculator = new StringCalculator();
 
-        $result = $calculator->add();
+        $result = $calculator->add("");
 
         $this->assertEquals(0, $result);
+    }
 
+    /**
+     * @test
+     */
+    public function givenOneParameterReturnsParameterValue(): void
+    {
+        $calculator = new StringCalculator();
+
+        $result = $calculator->add("2");
+
+        $this->assertEquals(2, $result);
     }
 }
