@@ -3,6 +3,7 @@
 namespace Deg540\StringCalculatorPHP;
 
 use Deg540\StringCalculatorPHP\Rules\DelimeterRule;
+use Deg540\StringCalculatorPHP\Rules\MaximumNumerAllowedRule;
 use Deg540\StringCalculatorPHP\Rules\NegativeNumberRule;
 
 class StringCalculator
@@ -12,6 +13,7 @@ class StringCalculator
     {
         $this->rules[] = new DelimeterRule();
         $this->rules[] = new NegativeNumberRule();
+        $this->rules[] = new MaximumNumerAllowedRule();
     }
 
     public function add($string) {
@@ -26,6 +28,7 @@ class StringCalculator
 
         $numbers = $this->rules[0]->manage($string);
         $numbers = $this->rules[1]->manage($numbers);
+        $numbers = $this->rules[2]->manage($numbers);
 
         $result = 0;
 

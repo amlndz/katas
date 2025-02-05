@@ -96,7 +96,7 @@ final class StringCalculatorTest extends TestCase
     public function givenNumberHigherThanMaximumAllowedIgnoredAndReturnSumResult(): void
     {
         $calculator = new StringCalculator();
-        
+
         $result = $calculator->add("//;\n1;2;6;9012");
 
         $this->assertEquals(9, $result);
