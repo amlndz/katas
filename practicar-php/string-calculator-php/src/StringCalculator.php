@@ -11,7 +11,9 @@ class StringCalculator
     {
         $this->rules[] = new DelimeterRule();
     }
+
     public function add($string) {
+
         if (empty($string)) {
             return 0;
         }
