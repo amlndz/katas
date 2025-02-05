@@ -14,7 +14,8 @@ class StringCalculator
             return $string;
         }
 
-        $numbers = array_map('intval', array_map('trim', explode(',', $string)));
+        $numbers = str_replace("\n", ",", $string);
+        $numbers = array_map('intval', array_map('trim', explode(',', $numbers)));
 
         $result = 0;
 
