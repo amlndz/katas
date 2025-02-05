@@ -15,8 +15,13 @@ class StringCalculator
         }
 
         $numbers = array_map('intval', array_map('trim', explode(',', $string)));
-        $result = intval($numbers[0]) + intval($numbers[1]);
 
+        $result = 0;
+
+        foreach ($numbers as $number) {
+            $result += $number;
+        }
+        
         return $result;
     }
 }

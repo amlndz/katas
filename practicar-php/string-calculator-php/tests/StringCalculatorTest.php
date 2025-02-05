@@ -44,4 +44,14 @@ final class StringCalculatorTest extends TestCase
 
         $this->assertEquals(7, $result);
     }
+
+    /**
+     * @test
+     */
+    public function givenThreeParameterReturnsSumResult(): void
+    {
+        $calculator = new StringCalculator();
+        $result = $calculator->add("2,5, 8");
+        $this->assertEquals(15, $result);
+    }
 }
