@@ -1,7 +1,7 @@
 <?php
 
 namespace Deg540\StringCalculatorPHP\Rules;
-
+use InvalidArgumentException;
 class NegativeNumberRule implements Rule
 {
 
