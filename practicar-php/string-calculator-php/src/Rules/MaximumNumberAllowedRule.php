@@ -10,5 +10,4 @@ class MaximumNumberAllowedRule implements Rule
     {
         return array_filter($numbers, fn($num) => $num <= self::$MAXIMUM_ALLOWED_NUMBER);
     }
-    
 }
