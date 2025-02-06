@@ -96,7 +96,7 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function givenParametersWithEspecialDelimeterReturnsSumResult(): void
+    public function givenParametersWithEspecialDelimiterReturnsSumResult(): void
     {
         $result = $this->calculator->add("//;\n1;2;6");
 

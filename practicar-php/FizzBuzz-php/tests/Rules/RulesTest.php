@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class RulesTest extends TestCase
 {
-    public $fizzBuzz = null;
+    public FizzBuzz $fizzBuzz;
 
     public function setUp(): void
     {

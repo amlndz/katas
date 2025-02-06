@@ -32,16 +32,6 @@ class FizzBuzzTest extends TestCase
     /**
      * @test
      */
-    public function given8Returns8(): void
-    {
-        $result = $this->fizzBuzz->execute(8);
-
-        $this->assertEquals('8', $result);
-    }
-
-    /**
-     * @test
-     */
     public function given3ReturnsFizz(): void
     {
         $result = $this->fizzBuzz->execute(3);

@@ -19,8 +19,7 @@ class FizzBuzz
         $this->rules[] = new BuzzRule();
     }
 
-    public function execute(int $number): string  {
-
+    public function execute(int $number): string {
         foreach ($this->rules as $rule) {
             if ($rule->isValid($number)) {
                 return $rule->getValue();

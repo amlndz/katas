@@ -2,8 +2,6 @@
 
 namespace Deg540\CleanCodeKata9\Rules;
 
-use Deg540\CleanCodeKata9\FizzBuzz;
-
 class FizzBuzzRule implements Rule
 {
     public function isValid(int $number): bool
@@ -13,6 +11,7 @@ class FizzBuzzRule implements Rule
         if ($fizz->isValid($number) && $buzz->isValid($number)) {
             return true;
         }
+
         return false;
     }
 

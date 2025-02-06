@@ -11,6 +11,7 @@ class StringCalculator
      * @var Rule[]
      */
     public array $rules;
+
     public function __construct()
     {
         $this->rules = [
@@ -19,14 +20,13 @@ class StringCalculator
         ];
     }
 
-    public function add($string) {
-
+    public function add($string): int {
         if (empty($string)) {
             return 0;
         }
 
         if (strlen($string) == 1) {
-            return $string;
+            return (int)$string;
         }
 
         $numbers = Delimiter::delimiter($string);
@@ -35,12 +35,6 @@ class StringCalculator
             $numbers = $rule->manage($numbers);
         }
 
-        $result = 0;
-
-        foreach ($numbers as $number) {
-            $result += $number;
-        }
-
-        return $result;
+        return array_sum($numbers);
     }
 }
