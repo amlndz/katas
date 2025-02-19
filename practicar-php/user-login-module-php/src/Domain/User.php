@@ -11,7 +11,7 @@ class User
         $this->userName = $userName;
     }
 
-    public function userName (): string
+    public function userName(): string
     {
         return $this->userName;
     }

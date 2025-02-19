@@ -7,6 +7,13 @@ use UserLoginService\Domain\User;
 
 class UserLoginService
 {
+    private SessionManager $sessionManager;
+
+    public function __construct(SessionManager $sessionManager)
+    {
+        $this->sessionManager = $sessionManager;
+    }
+
     /**
      * var User[]
      */
@@ -32,4 +39,8 @@ class UserLoginService
         return $this->loggedUsers;
     }
 
+    public function countExternalLoginSessions(): int
+    {
+        return $this->sessionManager->getSessions();
+    }
 }
