@@ -43,4 +43,15 @@ class UserLoginService
     {
         return $this->sessionManager->getSessions();
     }
+
+    public function login(String $username, String $password): string
+    {
+        if(!$this->sessionManager->login($username, $password))
+        {
+           return 'Login incorrecto';
+        }
+
+        $this->loggedUsers[] = new User($username);
+        return 'Login correcto';
+    }
 }

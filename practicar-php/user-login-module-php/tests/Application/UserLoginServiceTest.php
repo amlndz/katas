@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use UserLoginService\Application\UserLoginService;
 use UserLoginService\Domain\User;
 use UserLoginService\Tests\Doubles\DummySessionManager;
+use UserLoginService\Tests\Doubles\FakeSessionManager;
 use UserLoginService\Tests\Doubles\StubSessionManager;
 
 final class UserLoginServiceTest extends TestCase
@@ -25,6 +26,16 @@ final class UserLoginServiceTest extends TestCase
 
         $this->assertCount(1, $loggedUsers);
         $this->assertEquals('John Doe', $loggedUsers[0]->username());
+    }
+
+    /**
+     * @test
+     */
+    public function noUsersLoggedInManually(): void
+    {
+        $userLoginService = new UserLoginService(new DummySessionManager());
+
+        $this->assertEmpty($userLoginService->getLoggedUsers());
     }
 
     /**
@@ -54,5 +65,33 @@ final class UserLoginServiceTest extends TestCase
         $externalSessions = $userLoginService->countExternalLoginSessions();
 
         $this->assertEquals(15, $externalSessions);
+    }
+
+    /**
+     * @test
+     */
+    public function loginWithValidCredentials(): void
+    {
+        $userLoginService = new UserLoginService(new FakeSessionManager());
+
+        $result = $userLoginService->login('johnDoe', 'iamjohndoe');
+        $loggedUsers = $userLoginService->getLoggedUsers();
+
+        $this->assertCount(1, $loggedUsers);
+        $this->assertEquals('Login correcto', $result);
+    }
+
+    /**
+     * @test
+     */
+    public function loginWithInvalidCredentials(): void
+    {
+        $userLoginService = new UserLoginService(new FakeSessionManager());
+
+        $result = $userLoginService->login('johnDoe', 'wrongpassword');
+        $loggedUsers = $userLoginService->getLoggedUsers();
+
+        $this->assertCount(0, $loggedUsers);
+        $this->assertEquals('Login incorrecto', $result);
     }
 }
