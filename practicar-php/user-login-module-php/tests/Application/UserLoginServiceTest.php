@@ -7,6 +7,7 @@ namespace UserLoginService\Tests\Application;
 use PHPUnit\Framework\TestCase;
 use UserLoginService\Application\UserLoginService;
 use UserLoginService\Domain\User;
+use UserLoginService\Infrastructure\FacebookSessionManager;
 use UserLoginService\Tests\Doubles\DummySessionManager;
 use UserLoginService\Tests\Doubles\FakeSessionManager;
 use UserLoginService\Tests\Doubles\StubSessionManager;
@@ -93,5 +94,18 @@ final class UserLoginServiceTest extends TestCase
 
         $this->assertCount(0, $loggedUsers);
         $this->assertEquals('Login incorrecto', $result);
+    }
+
+    /**
+     * @test
+     */
+    public function successLogout(): void
+    {
+        $user = new User('johnDoe');
+        $userLoginService = new UserLoginService(new FacebookSessionManager());
+
+        $result = $userLoginService->logout($user);
+
+        $this->assertEquals('ok', $result);
     }
 }

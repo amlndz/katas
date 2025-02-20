@@ -24,9 +24,9 @@ class UserLoginService
      */
     public function manualLogin(User $user): void
     {
-        $existingUser = array_filter($this->loggedUsers, fn ($loggedUser) => $loggedUser->userName() === $user->userName());
+        $existsUser = in_array($user, $this->loggedUsers);
 
-        if(!empty($existingUser))
+        if(!$existsUser)
         {
             throw new Exception("User already logged in");
         }
@@ -53,5 +53,22 @@ class UserLoginService
 
         $this->loggedUsers[] = new User($username);
         return 'Login correcto';
+    }
+
+    public function logout(User $user): string
+    {
+        $existingUser = array_filter($this->loggedUsers, fn ($loggedUser) => $loggedUser->userName() === $user->userName());
+
+        if(!$existingUser)
+        {
+            return "User not found";
+        }
+        if(!$this->sessionManager->logout($user->userName()))
+        {
+            return "Logout incorrecto";
+        }
+
+
+        return 'ok';
     }
 }

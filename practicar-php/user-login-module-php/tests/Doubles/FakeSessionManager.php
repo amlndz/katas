@@ -15,4 +15,9 @@ class FakeSessionManager implements SessionManager
     {
         return $userName == 'johnDoe' && $password == 'iamjohndoe';
     }
+
+    public function logout(string $username): bool
+    {
+        return $username == 'johnDoe';
+    }
 }
